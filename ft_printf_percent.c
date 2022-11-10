@@ -10,22 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_printf_percent(va_list args, int width, int precision)
-{
-    int     count;
-    char    c;
+#include "ft_printf.h"
 
-    count = 0;
-    c = '%';
-    if (width > 1)
-    {
-        while (width-- > 1)
-        {
-            write(1, " ", 1);
-            count++;
-        }
-    }
-    write(1, &c, 1);
-    count++;
-    return (count);
+int ft_printf_percent(va_list args)
+{
+    write(1, "%", 1);
+    return (1);
 }

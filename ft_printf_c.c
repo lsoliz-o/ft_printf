@@ -11,22 +11,11 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int ft_printf_c(va_list args, int width, int precision)
+int ft_printf_c(va_list args)
 {
-    int     count;
-    char    c;
+    char c;
 
-    count = 0;
     c = va_arg(args, int);
-    if (width > 1)
-    {
-        while (width-- > 1)
-        {
-            write(1, " ", 1);
-            count++;
-        }
-    }
     write(1, &c, 1);
-    count++;
-    return (count);
+    return (1);
 }

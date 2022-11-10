@@ -10,25 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_printf_p(va_list args, int width, int precision)
-{
-    int     count;
-    char    *str;
-    char    *hex;
+#include "ft_printf.h"
 
-    count = 0;
-    str = va_arg(args, char *);
-    hex = ft_itoa_base((unsigned long)str, 16);
-    if (width > ft_strlen(hex) + 2)
-    {
-        while (width-- > ft_strlen(hex) + 2)
-        {
-            write(1, " ", 1);
-            count++;
-        }
-    }
+int ft_printf_p(va_list args)
+{
+    unsigned long long int p;
+    int                    i;
+    char                   *str;
+
+    i = 0;
+    p = va_arg(args, unsigned long long int);
+    str = ft_itoa_base(p, 16);
     write(1, "0x", 2);
-    write(1, hex, ft_strlen(hex));
-    count += ft_strlen(hex) + 2;
-    return (count);
+    while (str[i])
+    {
+        write(1, &str[i], 1);
+        i++;
+    }
+    return (i + 2);
 }

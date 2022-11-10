@@ -10,20 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_printf_width(va_list args, int width, int precision)
-{
-    int     count;
-    char    c;
+#include "ft_printf.h"
 
-    count = 0;
-    c = ' ';
-    if (width > 1)
+int ft_printf_width(va_list args, int width, int zero)
+{
+    int i;
+
+    i = 0;
+    while (i < width)
     {
-        while (width-- > 1)
-        {
-            write(1, &c, 1);
-            count++;
-        }
+        if (zero)
+            write(1, "0", 1);
+        else
+            write(1, " ", 1);
+        i++;
     }
-    return (count);
+    return (i);
 }

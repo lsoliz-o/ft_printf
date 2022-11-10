@@ -17,7 +17,8 @@ AR = @ar rcs
 RM = rm -f
 
 FILES = ft_printf ft_printf_c ft_printf_d ft_printf_p ft_printf_s \
-	ft_printf_x ft_printf_percent ft_printf_utils ft_printf_h ft_printf_width
+	ft_printf_x ft_printf_percent ft_printf_utils ft_printf_hex \
+	ft_printf_width ft_printf_u
 
 INC = ft_printf.h
 SRCS_DIR = ./src

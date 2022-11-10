@@ -11,34 +11,24 @@
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
-#define FT_PRINTF_H
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
+# define FT_PRINTF_H
+typedef char *VA_LIST;
+
+# include <stdarg.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
 
 int ft_printf(const char *format, ...);
-int ft_printf_c(va_list args, int width, int precision);
-int ft_printf_s(va_list args, int width, int precision);
-int ft_printf_percent(va_list args, int width, int precision);
-int ft_printf_d(va_list args, int width, int precision);
-int ft_printf_i(va_list args, int width, int precision);
-int ft_printf_u(va_list args, int width, int precision);
-int ft_printf_x(va_list args, int width, int precision);
-//int ft_printf_X(va_list args, int width, int precision);
-int ft_printf_p(va_list args, int width, int precision);
-int ft_printf_parser(const char *format, int *i, va_list args);
-int ft_printf_width(int width, int len, int zero);
-int ft_printf_precision(int precision, int len);
-int ft_printf_putchar(char c);
-int ft_printf_putstr(char *s);
-int ft_printf_putnbr(int n);
-int ft_printf_putnbr_u(unsigned int n);
-int ft_printf_putnbr_x(unsigned int n, char *base);
-int ft_printf_putnbr_p(unsigned long n);
-int ft_printf_strlen(char *s);
-int ft_printf_atoi(const char *str);
-int ft_printf_isdigit(int c);
-int ft_printf_isalpha(int c);
-int ft_printf_isalnum(int c);
+int ft_printf_s(va_list args);
+int ft_printf_c(va_list args);
+int ft_printf_d(va_list args);
+int ft_printf_u(va_list args);
+int ft_printf_x(va_list args);
+int ft_printf_p(va_list args);
+int ft_printf_hex(va_list args, char c);
+int ft_printf_percent(va_list args);
+int ft_printf_width(va_list args, int width, int zero);
+int ft_putnbr(int n);
+char *ft_itoa_base(unsigned long long int n, int base);
 #endif

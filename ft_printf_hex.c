@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_h.c                                      :+:      :+:    :+:   */
+/*   ft_printf_hex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsoliz-o <lsoliz-o@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,24 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_printf_h(va_list args, int width, int precision)
-{
-    int     count;
-    int     d;
-    char    *str;
+#include "ft_printf.h"
 
-    count = 0;
-    d = va_arg(args, int);
-    str = ft_itoa(d);
-    if (width > ft_strlen(str))
-    {
-        while (width-- > ft_strlen(str))
-        {
-            write(1, " ", 1);
-            count++;
-        }
-    }
-    write(1, str, ft_strlen(str));
-    count += ft_strlen(str);
-    return (count);
+int ft_printf_hex(va_list args, char c)
+{
+    unsigned int h;
+    int          i;
+
+    i = 0;
+    h = va_arg(args, unsigned int);
+    i += ft_putnbr(h);
+    return (i);
 }

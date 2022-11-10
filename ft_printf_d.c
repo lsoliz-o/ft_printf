@@ -10,24 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_printf_d(va_list args, int width, int precision)
-{
-    int     count;
-    int     d;
-    char    *str;
+#include "ft_printf.h"
 
-    count = 0;
+int ft_printf_d(va_list args)
+{
+    int d;
+    int i;
+
+    i = 0;
     d = va_arg(args, int);
-    str = ft_itoa(d);
-    if (width > ft_strlen(str))
+    if (d < 0)
     {
-        while (width-- > ft_strlen(str))
-        {
-            write(1, " ", 1);
-            count++;
-        }
+        write(1, "-", 1);
+        d = -d;
+        i++;
     }
-    write(1, str, ft_strlen(str));
-    count += ft_strlen(str);
-    return (count);
+    i += ft_putnbr(d);
+    return (i);
 }

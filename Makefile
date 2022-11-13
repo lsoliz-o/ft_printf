@@ -18,23 +18,27 @@ RM = rm -f
 
 FILES = ft_printf ft_printf_c ft_printf_d ft_printf_p ft_printf_s \
 	ft_printf_x ft_printf_percent ft_printf_utils ft_printf_hex \
-	ft_printf_width ft_printf_u
+	ft_printf_u ft_printf_width
+
+#FILES_B = ft_printf_width
 
 INC = ft_printf.h
 SRCS_DIR = ./src
 
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
+#SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES_B)))
 
 OBJS_DIR = ./
 
 OBJS = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES)))
+#OBJS_B = $(addprefix $(OBJS_DIR), $(addsuffix .o, $(FILES_B)))
 
+#NAME_B = .
 .c.o:
 	$(CC) $(CFLAGS) -c -o $@ $< -I $(INC)
 
 all: $(NAME)
-
-$(NAME): $(OBJS)
+$(NAME) : $(OBJS)
 	$(AR) $@ $^
 
 clean:
@@ -44,5 +48,11 @@ fclean: clean
 	$(RM) $(NAME)
 
 re: clean all
+
+#bonus:	$(NAME_B)
+
+#$(NAME_B):		$(OBJS) $(OBJS_B)
+#		@ar rc $(NAME) $(OBJS) $(OBJS_B)
+#		@touch $(NAME_B)
 
 .PHONY: all clean fclean re

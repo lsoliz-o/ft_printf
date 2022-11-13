@@ -12,23 +12,29 @@
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
-typedef char *VA_LIST;
 
 # include <stdarg.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdio.h>
+# include <limits.h>
+# include <ctype.h>
 
-int ft_printf(const char *format, ...);
-int ft_printf_s(va_list args);
-int ft_printf_c(va_list args);
-int ft_printf_d(va_list args);
-int ft_printf_u(va_list args);
-int ft_printf_x(va_list args);
-int ft_printf_p(va_list args);
-int ft_printf_hex(va_list args, char c);
-int ft_printf_percent(va_list args);
-int ft_printf_width(va_list args, int width, int zero);
-int ft_putnbr(int n);
-char *ft_itoa_base(unsigned long long int n, int base);
+int		ft_print_param(const char *format, va_list args);
+int		ft_printf(const char *format, ...);
+int		ft_printf_s(va_list args);
+int		ft_printf_c(va_list args);
+int		ft_printf_d(va_list args);
+int		ft_printf_u(va_list args);
+int		ft_printf_x(va_list args);
+int		ft_printf_p(va_list args);
+int		ft_printf_hex(va_list args, char c);
+int		ft_printf_percent(va_list args);
+int		ft_printf_width(va_list args, int width, int zero);
+int		ft_putnbr(int n);
+char	*ft_itoa_base(unsigned long long int n, int base);
+int		ft_printf_flag(const char *format, va_list arg);
+int		ft_printf_h(va_list args, char c);
+char	*ft_itoa_b(unsigned long long int n, int base);
+
 #endif

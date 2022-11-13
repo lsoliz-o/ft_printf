@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_hex.c                                      :+:      :+:    :+:   */
+/*   ft_printf_hex.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsoliz-o <lsoliz-o@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,13 +12,38 @@
 
 #include "ft_printf.h"
 
-int ft_printf_hex(va_list args, char c)
+int	ft_printf_hex(va_list args, char c)
 {
-    unsigned int h;
-    int          i;
+	unsigned int	h;
+	int				i;
+	char			*str;
 
-    i = 0;
-    h = va_arg(args, unsigned int);
-    i += ft_putnbr(h);
-    return (i);
+	i = 0;
+	h = va_arg(args, unsigned int);
+	str = ft_itoa_base(h, 16);
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+	free (str);
+	return (i);
+}
+
+int	ft_printf_h(va_list args, char c)
+{
+	unsigned int	h;
+	int				i;
+	char			*str;
+
+	i = 0;
+	h = va_arg(args, unsigned int);
+	str = ft_itoa_b(h, 16);
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+	free (str);
+	return (i);
 }

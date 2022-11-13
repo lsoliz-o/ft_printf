@@ -12,19 +12,19 @@
 
 #include "ft_printf.h"
 
-int ft_printf_d(va_list args)
+int	ft_printf_d(va_list args)
 {
-    int d;
-    int i;
+	int	d;
+	int	i;
 
-    i = 0;
-    d = va_arg(args, int);
-    if (d < 0)
-    {
-        write(1, "-", 1);
-        d = -d;
-        i++;
-    }
-    i += ft_putnbr(d);
-    return (i);
+	i = 0;
+	d = va_arg(args, int);
+	if (d < 0)
+	{
+		write(1, "-", 1);
+		d = -d;
+		i++;
+	}
+	i += ft_putnbr(d);
+	return (i);
 }

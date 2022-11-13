@@ -12,13 +12,13 @@
 
 #include "ft_printf.h"
 
-int ft_printf_u(va_list args)
+int	ft_printf_u(va_list args)
 {
-    unsigned int u;
-    int          i;
+	unsigned int	u;
+	int				i;
 
-    i = 0;
-    u = va_arg(args, unsigned int);
-    i += ft_putnbr(u);
-    return (i);
+	i = 0;
+	u = va_arg(args, unsigned int);
+	i += ft_putnbr(u);
+	return (i);
 }

@@ -9,13 +9,14 @@
 /*   Updated: 2022/11/08 23:28:08 by lsoliz-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "ft_printf.h"
 
-int ft_printf_c(va_list args)
+int	ft_printf_c(va_list args)
 {
-    char c;
+	char	c;
 
-    c = va_arg(args, int);
-    write(1, &c, 1);
-    return (1);
+	c = va_arg(args, int);
+	write (1, &c, 1);
+	return (1);
 }

@@ -12,56 +12,68 @@
 
 #include "ft_printf.h"
 
-int ft_printf(const char *format, ...)
+int	ft_print_param(const char *format, va_list args)
 {
-    int     count;
-    va_list args;
+	int		i;
 
-    count = 0;
-    va_start(args, format);
-    while (*format)
-    {
-        if (*format == '%')
-        {
-            format++;
-            if (*format == 'c')
-                count += ft_printf_c(args);
-            else if (*format == 's')
-                count += ft_printf_s(args);
-            else if (*format == 'p')
-                count += ft_printf_p(args);
-            else if (*format == 'd' || *format == 'i')
-                count += ft_printf_d(args);
-            else if (*format == 'u')
-                count += ft_printf_x(args);
-            else if (*format == 'x' || *format == 'X')
-                count += ft_printf_hex(args, *format);
-            else if (*format == '%')
-                count += ft_printf_percent(args);
-            else
-                count += ft_printf_width(args, 1, 0);
-        }
-        else
-        {
-            write(1, format, 1);
-            count++;
-        }
-        format++;
-    }
-    va_end(args);
-    return (count);
+	i = 0;
+	if (*format == 'c')
+		i += ft_printf_c(args);
+	else if (*format == 's')
+		i += ft_printf_s(args);
+	else if (*format == 'p')
+		i += ft_printf_p(args);
+	else if (*format == 'd' || *format == 'i')
+		i += ft_printf_d(args);
+	else if (*format == 'u')
+		i += ft_printf_x(args);
+	else if (*format == 'x')
+		i += ft_printf_hex(args, *format);
+	else if (*format == 'X')
+		i += ft_printf_h(args, *format);
+	else if (*format == '%')
+		i += ft_printf_percent(args);
+	else
+		i += ft_printf_width(args, 1, 0);
+	return (i);
 }
 
+int	ft_printf(const char *format, ...)
+{
+	int		count;
+	va_list	args;
+
+	count = 0;
+	va_start(args, format);
+	while (*format)
+	{
+		if (*format == '%')
+		{
+			format++;
+			count += ft_print_param(format, args);
+		}
+		else
+		{
+			write(1, format, 1);
+			count++;
+		}
+		format++;
+	}
+	va_end(args);
+	return (count);
+}
+/*
 int main(void)
 {
-    int i;
-    int j;
+	int i;
+	int j;
 
-    i = printf("Hello World!");
-    printf("\n");
-    j = ft_printf("Hello World!");
-    printf("\n");
-    printf("%d\n", i);
-    printf("%d\n", j);
-    return (0);
+	i = printf("Hello World!");
+	printf("\n");
+	j = ft_printf("Hello World!");
+	printf("\n");
+	printf("%d\n", i);
+	printf("%d\n", j);
+	return (0);
 }
+*/

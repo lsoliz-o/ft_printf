@@ -12,19 +12,19 @@
 
 #include "ft_printf.h"
 
-int ft_printf_s(va_list args)
+int	ft_printf_s(va_list args)
 {
-    char *str;
-    int  i;
+	char	*str;
+	int		i;
 
-    i = 0;
-    str = va_arg(args, char *);
-    if (str == NULL)
-        str = "(null)";
-    while (str[i])
-    {
-        write(1, &str[i], 1);
-        i++;
-    }
-    return (i);
+	i = 0;
+	str = va_arg(args, char *);
+	if (str == NULL)
+		str = "(null)";
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+	return (i);
 }

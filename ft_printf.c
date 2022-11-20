@@ -33,8 +33,6 @@ int	ft_print_param(const char *format, va_list args)
 		i += ft_printf_h(args, *format);
 	else if (*format == '%')
 		i += ft_printf_percent(args);
-	else
-		i += ft_printf_width(args, 1, 0);
 	return (i);
 }
 

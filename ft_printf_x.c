@@ -22,4 +22,3 @@ int	ft_printf_x(va_list args)
 	i += ft_putnbr(x);
 	return (i);
 }
-																				

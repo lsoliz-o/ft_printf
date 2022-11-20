@@ -47,3 +47,28 @@ int	ft_printf_h(va_list args, char c)
 	free (str);
 	return (i);
 }
+
+int	ft_printf_p(va_list args)
+{
+	unsigned long long int	p;
+	int						i;
+	char					*str;
+
+	i = 0;
+	p = va_arg(args, unsigned long long int);
+	str = ft_itoa_base(p, 16);
+	write(1, "0x", 2);
+	while (str[i])
+	{
+		write(1, &str[i], 1);
+		i++;
+	}
+	free (str);
+	return (i + 2);
+}
+
+int	ft_printf_percent(va_list args)
+{
+	write(1, "%", 1);
+	return (1);
+}

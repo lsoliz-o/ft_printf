@@ -6,13 +6,13 @@
 /*   By: lsoliz-o <lsoliz-o@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 14:54:01 by lsoliz-o          #+#    #+#             */
-/*   Updated: 2022/11/13 18:52:33 by lsoliz-o         ###   ########.fr       */
+/*   Updated: 2022/11/20 18:56:00 by lsoliz-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	main(void)
+/*int	main(void)
 {
 	int	i;
 	int	j;
@@ -33,5 +33,21 @@ int	main(void)
 	printf("\n");
 	ft_printf(" %i ", INT_MAX);
 	printf("\n");
-	return (0);
+}*/
+int	main(void)
+{
+	int	i;
+	int	j;
+
+	i = printf("%-7s", "hola");
+	printf("\n");
+	ft_printf_b(" %c ", '0');
+	printf("\n");
+	printf(" %d ", i);
+	printf("\n");
+	ft_printf_b(" %-c ", '0');
+	printf("\n");
+	printf(" %.c ", '0');
+	printf("\n");
+	ft_printf_b(" %.c ", '0');
 }

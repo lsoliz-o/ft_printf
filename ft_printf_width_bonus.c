@@ -1,30 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_d.c                                      :+:      :+:    :+:   */
+/*   ft_printf_width.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsoliz-o <lsoliz-o@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 23:28:55 by lsoliz-o          #+#    #+#             */
-/*   Updated: 2022/11/08 23:28:55 by lsoliz-o         ###   ########.fr       */
+/*   Created: 2022/11/08 23:52:21 by lsoliz-o          #+#    #+#             */
+/*   Updated: 2022/11/08 23:52:21 by lsoliz-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf_d(va_list args)
+int	ft_printf_width(va_list args, int width, int zero)
 {
-	int	d;
 	int	i;
 
 	i = 0;
-	d = va_arg(args, int);
-	if (d < 0)
+	while (i < width)
 	{
-		write(1, "-", 1);
-		d = -d;
+		if (zero)
+			write(1, "0", 1);
+		else
+			write(1, " ", 1);
 		i++;
 	}
-	i += ft_putnbr(d);
 	return (i);
+}
+
+int	ft_printf_presicion(const char *format, va_list arg)
+{
+	int	i;
+	int	width;
+	int	zero;
+
+	i = 0;
+	width = 0;
+	zero = 0;
+	while (format[i] >= 48 && format[i] <= 57)
+	{
+		width = width * 10 + (format[i] - '0');
+		i++;
+	}
+	if (format[i] == 0)
+	{
+		zero = 1;
+		i++;
+	}
+	return (ft_printf_width(arg, width, zero));
 }

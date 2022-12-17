@@ -12,17 +12,18 @@
 
 #include "ft_printf.h"
 
-int	ft_printf_width(va_list args, int width, int zero)
+int	ft_printf_width(int width, int minus, int zero)
 {
 	int	i;
 
 	i = 0;
-	while (i < width)
+	while (minus < width)
 	{
 		if (zero)
 			write(1, "0", 1);
 		else
 			write(1, " ", 1);
+		width -= 1;
 		i++;
 	}
 	return (i);
@@ -47,5 +48,5 @@ int	ft_printf_presicion(const char *format, va_list arg)
 		zero = 1;
 		i++;
 	}
-	return (ft_printf_width(arg, width, zero));
+	return (ft_printf_width(width, -1, zero));
 }

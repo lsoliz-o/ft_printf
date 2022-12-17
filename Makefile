@@ -18,9 +18,10 @@ RM = rm -f
 
 FILES = ft_printf ft_printf_c  \
 	ft_printf_x ft_printf_utils ft_printf_hex \
+	 ft_printf_flag
 
-FILES_B = ft_printf_width_bonus ft_printf_bonus  \
-	ft_printf_utils
+FILES_B = ft_printf_width_bonus ft_printf  \
+	 ft_printf_x ft_printf_utils ft_printf_hex
 
 INC = ft_printf.h
 

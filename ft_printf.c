@@ -12,19 +12,19 @@
 
 #include "ft_printf.h"
 
-int	ft_print_param(const char *format, va_list args)
+int	ft_printf_param(const char *format, va_list args, t_flags *flags)
 {
 	int		i;
 
 	i = 0;
 	if (*format == 'c')
-		i += ft_printf_c(args);
+		i += ft_printf_c(args, flags);
 	else if (*format == 's')
-		i += ft_printf_s(args);
+		i += ft_printf_s(args, flags);
 	else if (*format == 'p')
 		i += ft_printf_p(args);
 	else if (*format == 'd' || *format == 'i')
-		i += ft_printf_d(args);
+		i += ft_printf_d(args, flags);
 	else if (*format == 'u')
 		i += ft_printf_x(args);
 	else if (*format == 'x')
@@ -40,6 +40,7 @@ int	ft_printf(const char *format, ...)
 {
 	int		count;
 	va_list	args;
+	t_flags	*flags;
 
 	count = 0;
 	va_start(args, format);
@@ -48,7 +49,7 @@ int	ft_printf(const char *format, ...)
 		if (*format == '%')
 		{
 			format++;
-			count += ft_print_param(format, args);
+			count += ft_printf_flag(*format, args, flags);
 		}
 		else
 		{
@@ -60,6 +61,7 @@ int	ft_printf(const char *format, ...)
 	va_end(args);
 	return (count);
 }
+
 /*
 int main(void)
 {

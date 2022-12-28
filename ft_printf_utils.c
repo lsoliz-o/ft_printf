@@ -17,7 +17,7 @@ int	ft_putnbr(unsigned int n)
 	int	i;
 
 	i = 0;
-	if (n == INT_MIN)
+	if (n == INT_MIN) 
 		return (write(1, "2147483648", 10));
 	if (n < 0)
 	{

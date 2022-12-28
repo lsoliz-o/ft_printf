@@ -6,30 +6,28 @@
 /*   By: lsoliz-o <lsoliz-o@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 23:28:08 by lsoliz-o          #+#    #+#             */
-/*   Updated: 2022/11/08 23:28:08 by lsoliz-o         ###   ########.fr       */
+/*   Updated: 2022/12/28 16:11:36 by lsoliz-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf_c(va_list args, t_flags *flags)
+int	ft_printf_c(va_list args, t_flags flags)
 {
 	char	c;
-	int		count;
+	int		i;
 
-	count = 0;
+	i = 0;
 	c = va_arg(args, int);
-	if (flags->minus == 1)
-	{
+	if (flags.minus == 1)
 		write (1, &c, 1);
-		count = ft_printf_width(flags->width, 1, 0);
-	}
-	if (flags->minus == 0)
+	i += ft_printf_width(&c, args, flags);
+	if (flags.minus == 0)
 		write (1, &c, 1);
-	return (count + 1);
+	return (1);
 }
 
-int	ft_printf_s(va_list args, t_flags *flags)
+int	ft_printf_s(va_list args, t_flags flags)
 {
 	char	*str;
 	int		i;
@@ -46,7 +44,7 @@ int	ft_printf_s(va_list args, t_flags *flags)
 	return (i);
 }
 
-int	ft_printf_d(va_list args, t_flags *flags)
+int	ft_printf_d(va_list args, t_flags flags)
 {
 	int	d;
 	int	i;
@@ -63,7 +61,7 @@ int	ft_printf_d(va_list args, t_flags *flags)
 	return (i);
 }
 
-int	ft_printf_u(va_list args, t_flags *flags)
+int	ft_printf_u(va_list args, t_flags flags)
 {
 	unsigned int	u;
 	int				i;

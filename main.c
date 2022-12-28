@@ -6,7 +6,7 @@
 /*   By: lsoliz-o <lsoliz-o@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 14:54:01 by lsoliz-o          #+#    #+#             */
-/*   Updated: 2022/11/21 21:32:45 by lsoliz-o         ###   ########.fr       */
+/*   Updated: 2022/12/28 17:01:44 by lsoliz-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ int	main(void)
 	int	i;
 	int	j;
 
-	i = printf("%c", 'h');
+	i = printf(" %-c", '0' -256);
 	printf("\n");
-	j = ft_printf("%c", 'h');
+	j = ft_printf(" %-c", '0' -256);
 	printf("\n");
 	printf("%d", i);
 	printf("\n");
